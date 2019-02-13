@@ -1,4 +1,7 @@
 <p>
   condominium works!
 </p>
-<button mat-raised-button color="primary">Primary</button>
+
+<ul>
+  <li *ngFor="let c of condominiums">{{ c.name }}</li>
+</ul>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CondominiumComponent } from './admin/condominium/condominium.component';
 import { MaterialModule } from './config/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MaterialModule } from './config/material.module';
   imports: [
     BrowserModule,
     MaterialModule,
-    AppRoutingModule    
+    AppRoutingModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
