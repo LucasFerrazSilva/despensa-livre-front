@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CondominiumService } from './condominium.service';
+import { MatTableDataSource } from '@angular/material';
 import { Condominium } from './condominium';
+import { CondominiumService } from './condominium.service';
 
 @Component({
   selector: 'app-condominium',
@@ -8,6 +9,9 @@ import { Condominium } from './condominium';
   styleUrls: ['./condominium.component.css']
 })
 export class CondominiumComponent implements OnInit {
+
+  displayedColumns = ['name', 'address'];
+  dataSource;
 
   private condominiums: Condominium[];
 
@@ -17,6 +21,7 @@ export class CondominiumComponent implements OnInit {
     this.service.list().subscribe(
       list => {
         this.condominiums = list;
+        this.dataSource = this.condominiums;
       },
       err => {
         console.log(err);
