@@ -1,3 +1,15 @@
-<p>
-  condominium-form works!
-</p>
+<mat-card>
+  <form [formGroup]="form" (submit)="save()">
+    <input type="hidden" formControlName="id">
+    
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name...">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput formControlName="address" placeholder="Address...">
+    </mat-form-field>
+
+    <button mat-flat-button [disabled]="form.invalid" color="primary">Salvar</button>
+  </form>
+</mat-card>

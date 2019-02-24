@@ -13,7 +13,11 @@ export class CondominiumService {
 
 
   public list(): Observable<Condominium[]> {
-    return this.http.get<Condominium[]>(environment.apiUrl + "condominium/all");
+    return this.http.get<Condominium[]>(environment.apiUrl + "api/condominium/all");
+  }
+
+  public save(obj: Condominium): Observable<Object> {
+    return this.http.post(environment.apiUrl + "api/condominium/save", obj);
   }
 
 }

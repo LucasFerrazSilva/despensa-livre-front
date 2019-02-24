@@ -1,5 +1,5 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatTableModule, MatCardModule, MatInputModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -7,13 +7,17 @@ import { NgModule } from '@angular/core';
     BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatInputModule
   ],
   exports: [
     BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }
