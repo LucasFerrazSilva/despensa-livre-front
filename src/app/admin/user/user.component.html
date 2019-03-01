@@ -1,8 +1,8 @@
 <mat-card class="content">
-  <h2>Condomínios</h2>
+  <h2>Usuários</h2>
 
   <div class="buttons">
-    <a mat-stroked-button color="primary" routerLink="/condominium/form">Novo</a>
+    <a mat-stroked-button color="primary" routerLink="/user/form">Novo</a>
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
@@ -11,16 +11,21 @@
       <td mat-cell *matCellDef="let element">{{element.name}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Address</th>
-      <td mat-cell *matCellDef="let element">{{element.address}}</td>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let element">{{element.email}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="condominium">
+      <th mat-header-cell *matHeaderCellDef>Condominium</th>
+      <td mat-cell *matCellDef="let element">{{element.condominium?.name}}</td>
     </ng-container>
     
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button>
-          <mat-icon aria-label="Edit" color="primary" routerLink="/condominium/form/{{element.id}}">edit</mat-icon>
+          <mat-icon aria-label="Edit" color="primary" routerLink="/user/form/{{element.id}}">edit</mat-icon>
         </button>
       </td>
     </ng-container>

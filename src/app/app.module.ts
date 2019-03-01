@@ -8,12 +8,16 @@ import { MaterialModule } from './config/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CondominiumFormComponent } from './admin/condominium/condominium-form/condominium-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './admin/user/user.component';
+import { UserFormComponent } from './admin/user/user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CondominiumComponent,
-    CondominiumFormComponent
+    CondominiumFormComponent,
+    UserComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CondominiumService } from '../condominium.service';
 import { Condominium } from '../condominium';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-condominium-form',
@@ -12,7 +13,12 @@ export class CondominiumFormComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: CondominiumService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private service: CondominiumService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -20,20 +26,29 @@ export class CondominiumFormComponent implements OnInit {
       name: ['', Validators.required],
       address: ['', Validators.required]
     });
+
+    const id = this.route.snapshot.params.id;
+
+    if(id) {
+      this.service.get(id).subscribe(
+        obj => {
+          this.form = this.formBuilder.group({
+            id: [obj.id],
+            name: [obj.name, Validators.required],
+            address: [obj.address, Validators.required]
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   save() {
-    const obj: Condominium = this.form.value;
-
-    console.log(obj);
-
-    this.service.save(obj).subscribe(
-      obj => {
-        console.log(obj);
-      },
-      err => {
-        console.log(err);
-      }
+    this.service.save(this.form.value).subscribe(
+      obj => this.router.navigateByUrl('condominium'),
+      err => console.log(err)
     );
   }
 

@@ -1,0 +1,27 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="save()">
+    <input type="hidden" formControlName="id">
+    
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name...">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-select placeholder="Condominium..." formControlName="condominium">
+        <mat-option *ngFor="let condominium of condominiums" [value]="condominium.id">
+          {{condominium.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="E-mail...">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Password...">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="form.invalid">Salvar</button>
+  </form>
+</mat-card>

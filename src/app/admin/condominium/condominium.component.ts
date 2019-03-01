@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
 import { Condominium } from './condominium';
 import { CondominiumService } from './condominium.service';
 
@@ -10,22 +9,26 @@ import { CondominiumService } from './condominium.service';
 })
 export class CondominiumComponent implements OnInit {
 
-  displayedColumns = ['name', 'address'];
+  displayedColumns = ['name', 'address', 'edit', 'remove'];
   dataSource;
-
-  private condominiums: Condominium[];
 
   constructor(private service: CondominiumService) { }
 
   ngOnInit() {
+    this.loadDataSource();
+  }
+
+  remove(id: string) {
+    this.service.remove(id).subscribe(
+      resp => this.loadDataSource(),
+      err => console.log(err)
+    );
+  }
+
+  loadDataSource() {
     this.service.list().subscribe(
-      list => {
-        this.condominiums = list;
-        this.dataSource = this.condominiums;
-      },
-      err => {
-        console.log(err);
-      }
+      list => this.dataSource = list,
+      err => console.log(err)
     );
   }
 
